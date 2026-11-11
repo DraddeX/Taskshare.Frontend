@@ -1,0 +1,8 @@
+# Claude Code local settings and worktrees
+.claude/
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
