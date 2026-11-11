@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/script.js" defer></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="blobs">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+    </div>
+
+    <nav>
+      <div class="logo">task<span>.</span>share</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        🌙
+      </button>
+    </nav>
+
+    <form id="login-form" novalidate>
+      <a href="../index.html" class="neon-link" id="back">↼Back</a>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        required
+      />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        autocomplete="current-password"
+        required
+      />
+
+      <p class="form-error" id="login-error" role="alert" hidden></p>
+
+      <button class="btn-primary" type="submit" id="login-button">Login</button>
+
+      <p class="form-footer">
+        No account yet? <a href="register.html">Register</a>
+      </p>
+    </form>
+
+    <script>
+      const params = new URLSearchParams(location.search);
+      const redirectTo = Auth.safeRedirect(
+        params.get("redirect") || "../index.html",
+      );
+
+      // Already logged in? Skip the form.
+      if (Auth.isLoggedIn()) location.replace(redirectTo);
+
+      const form = document.getElementById("login-form");
+      const errorBox = document.getElementById("login-error");
+      const button = document.getElementById("login-button");
+
+      const showError = (msg) => {
+        errorBox.textContent = msg;
+        errorBox.hidden = !msg;
+      };
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        showError("");
+
+        if (!form.checkValidity()) {
+          showError("Please enter a valid email and password.");
+          return;
+        }
+
+        button.disabled = true;
+        button.textContent = "Logging in…";
+        try {
+          await Auth.login(form.email.value.trim(), form.password.value);
+          location.replace(redirectTo);
+        } catch (err) {
+          showError(err.message);
+          button.disabled = false;
+          button.textContent = "Login";
+        }
+      });
+    </script>
+  </body>
+</html>

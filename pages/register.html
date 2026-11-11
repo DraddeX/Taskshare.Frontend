@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/script.js" defer></script>
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="blobs">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+    </div>
+
+    <nav>
+      <div class="logo">task<span>.</span>share</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        🌙
+      </button>
+    </nav>
+
+    <form id="register-form" novalidate>
+      <a href="../index.html" class="neon-link" id="back">↼Back</a>
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        autocomplete="username"
+        required
+      />
+
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        required
+      />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        autocomplete="new-password"
+        minlength="6"
+        required
+      />
+
+      <label for="repeat-password">Repeat password:</label>
+      <input
+        type="password"
+        id="repeat-password"
+        name="repeatPassword"
+        autocomplete="new-password"
+        required
+      />
+
+      <p class="form-error" id="register-error" role="alert" hidden></p>
+
+      <button class="btn-primary" type="submit" id="register-button">
+        Register
+      </button>
+
+      <p class="form-footer">
+        Already have an account? <a href="login.html">Login</a>
+      </p>
+    </form>
+
+    <script>
+      // Already logged in? Nothing to register.
+      if (Auth.isLoggedIn()) location.replace(Auth.safeRedirect("../index.html"));
+
+      const form = document.getElementById("register-form");
+      const errorBox = document.getElementById("register-error");
+      const button = document.getElementById("register-button");
+
+      const showError = (msg) => {
+        errorBox.textContent = msg;
+        errorBox.hidden = !msg;
+      };
+
+      const setBusy = (busy) => {
+        button.disabled = busy;
+        button.textContent = busy ? "Creating account…" : "Register";
+      };
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        showError("");
+
+        const username = form.username.value.trim();
+        const email = form.email.value.trim();
+        const password = form.password.value;
+
+        if (!username) return showError("Please choose a username.");
+        if (!form.email.checkValidity()) return showError("Please enter a valid email address.");
+        if (password.length < 6) return showError("Your password must be at least 6 characters.");
+        if (password !== form.repeatPassword.value) return showError("The passwords don't match.");
+
+        setBusy(true);
+        try {
+          await Auth.register(username, email, password);
+        } catch (err) {
+          showError(err.message);
+          setBusy(false);
+          return;
+        }
+
+        // Account created: log straight in. If that fails, send them to the login page.
+        try {
+          await Auth.login(email, password);
+          location.replace(Auth.safeRedirect("../index.html"));
+        } catch {
+          location.replace("login.html");
+        }
+      });
+    </script>
+  </body>
+</html>

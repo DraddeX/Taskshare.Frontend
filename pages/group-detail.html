@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <script src="../assets/js/auth.js" data-require-auth></script>
+    <script src="../assets/js/script.js" defer></script>
+    <title>Group-detail</title>
+  </head>
+  <body>
+    <!-- On this page the group details are displayed, like the code and the members
+    and the tasks. -->
+
+    <div class="blobs">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+    </div>
+
+    <nav>
+      <div class="logo">task<span>.</span>share</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        🌙
+      </button>
+    </nav>
+
+    <a href="../index.html" class="neon-link">↼Back</a>
+    
+    <div>
+      <h2 id="group-name"></h2>
+      <h3 id="group-code"></h3>
+
+      <div id="task-list"></div>
+
+      <button id="add-task-button"></button>
+    </div>
+  </body>
+</html>

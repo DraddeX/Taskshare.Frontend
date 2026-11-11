@@ -1,0 +1,84 @@
+:root {
+  --bg: #0b0b14;
+  --text: #f4f4ff;
+  --muted: #a3a3c2;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --accent-1: #ff3d7f;
+  --accent-2: #7c4dff;
+  --accent-3: #00e5ff;
+  --radius: 20px;
+}
+[data-theme="light"] {
+  --bg: #f6f5ff;
+  --text: #15132b;
+  --muted: #5c5a7a;
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(20, 10, 60, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition:
+    background 0.4s,
+    color 0.4s;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+.neon-link {
+  color: var(--accent-1);
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 16px;
+  :hover {
+    transform: translateY(-3px);
+    /*Add any additional hover styles here*/
+  }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s,
+    transform 0.8s;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

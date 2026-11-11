@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taskshare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/script.js" defer></script>
+</head>
+<body>
+  <div class="blobs"><div class="blob"></div><div class="blob"></div><div class="blob"></div></div>
+
+  <nav>
+    <div class="logo">task<span>.</span>share</div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Sharing tasks<br /><span class="gradient-text">made easy.</span></h1>
+      <p>Create and manage tasks with ease. Share them with your team and collaborate in real-time.</p>
+      <a href="pages/create-group.html" class="btn" id="ctaBtn" data-requires-auth>Create group</a>
+      <a href="pages/join-group.html" class="neon-link" data-requires-auth>Join group</a>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="reveal">What's in here</h2>
+    <div class="cards">
+      <div class="card reveal"><div class="icon">🏠</div><h3>Households</h3><p>Manage tasks for your household.</p></div>
+      <div class="card reveal"><div class="icon">📚</div><h3>School assignments</h3><p>Collaborate on school assignments.</p></div>
+      <div class="card reveal"><div class="icon">💼</div><h3>Work projects</h3><p>Organize and track work-related tasks.</p></div>
+      <div class="card reveal"><div class="icon">👥</div><h3>Group activities</h3><p>Coordinate group events and activities.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="reveal">Numbers go up</h2>
+    <div class="stats">
+      <div class="stat reveal"><strong data-count="0">0</strong><span>frameworks used</span></div>
+      <div class="stat reveal"><strong data-count="1">0</strong><span>file</span></div>
+      <div class="stat reveal"><strong data-count="100">0</strong><span>% vanilla</span></div>
+      <div class="stat reveal"><strong data-count="9001">0</strong><span>vibes</span></div>
+    </div>
+  </section>
+
+  <footer>Built with HTML, CSS &amp; JS ✨</footer>
+</body>
+</html>

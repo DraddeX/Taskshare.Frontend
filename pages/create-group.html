@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <script src="../assets/js/auth.js" data-require-auth></script>
+    <script src="../assets/js/script.js" defer></script>
+    <title>Create-group</title>
+  </head>
+  <body>
+    <!-- This page allows the user to create a group. -->
+
+    <div class="blobs">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+    </div>
+
+    <nav>
+      <div class="logo">task<span>.</span>share</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        🌙
+      </button>
+    </nav>
+
+    
+    <form id="create-group-form">
+      <a href="../index.html" class="neon-link" id="back">↼Back</a>
+      <div class="form-container">
+        <label for="group-name">Group name:</label>
+        <input type="text" id="group-name" name="group-name" required />
+
+        <button class="btn-primary" type="submit">Create</button>
+      </div>
+    </form>
+  </body>
+</html>

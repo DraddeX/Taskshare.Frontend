@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <script src="../assets/js/auth.js" data-require-auth></script>
+    <script src="../assets/js/script.js" defer></script>
+    <title>Join-group</title>
+  </head>
+  <body>
+    <!-- On this page I want a simple imput field that allows a user to join a
+    group with a code and a button press. That button press hadnles an api call,
+    the user then is redirected to a new page called group-(code) overview. -->
+
+    <div class="blobs">
+      <div class="blob"></div>
+      <div class="blob"></div>
+      <div class="blob"></div>
+    </div>
+
+    <nav>
+      <div class="logo">task<span>.</span>share</div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        🌙
+      </button>
+    </nav>
+
+    
+    <form id="join-group-form">
+      <a href="../index.html" class="neon-link" id="back">↼Back</a>
+      <div class="form-container">
+        <label for="code-input">Group code:</label>
+        <input type="text" id="code-input" required />
+
+        <button class="btn" type="submit">Join</button>
+      </div>
+    </form>
+  </body>
+</html>
